@@ -1,17 +1,11 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:req_api_app/constant/color.dart';
-import 'package:req_api_app/component/appbar.dart';
 import 'package:req_api_app/constant/size.dart';
-// import 'package:req_api_app/models/category.dart';
 
 import 'package:req_api_app/screen/profile.dart';
-import 'package:req_api_app/user/Data.dart';
+import 'package:req_api_app/user/DataUser.dart';
 
 import 'package:req_api_app/user/search_testfield.dart';
 
@@ -26,6 +20,7 @@ class HomeScreenUser extends StatefulWidget {
   }
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenUserState createState() => _HomeScreenUserState();
 }
 
@@ -75,7 +70,7 @@ class Body extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         InkWell(
@@ -97,7 +92,7 @@ class Body extends StatelessWidget {
                 onTap: () {
                   if (index == 1) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Data()));
+                        MaterialPageRoute(builder: (context) => const Data()));
                   } else if (index == 0) {
                     Navigator.push(
                         context,
@@ -197,7 +192,7 @@ class AppBar extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          // const SearchTextField()
+          const SearchTextField()
         ],
       ),
     );

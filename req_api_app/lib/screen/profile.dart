@@ -8,7 +8,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:http/http.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:req_api_app/constant/color.dart';
-import 'package:req_api_app/constant/profile.dart';
+import 'package:req_api_app/constant/profileImage.dart';
 import 'package:req_api_app/pages/login_page.dart';
 import 'package:req_api_app/screen/Data_profile.dart';
 
@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
           padding: const EdgeInsets.all(tDefaultSize),
           child: Column(
               // ignore: prefer_const_literals_to_create_immutables
-               children: <Widget>[
+              children: <Widget>[
                 SizedBox(
                   width: 120,
                   height: 120,
@@ -169,10 +169,7 @@ class ProfileMenuWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(100),
           color: Colors.white.withOpacity(0.1),
         ),
-        child: const Icon(
-          LineAwesomeIcons.cog,
-          color: Colors.blue,
-        ),
+        child: Icon(icon, color: Colors.blue),
       ),
       title: Text(
         title,

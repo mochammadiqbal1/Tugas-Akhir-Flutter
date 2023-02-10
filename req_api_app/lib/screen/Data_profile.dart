@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:req_api_app/constant/color.dart';
-import 'package:req_api_app/constant/profile.dart';
+import 'package:req_api_app/constant/profileImage.dart';
 
 final _formkey = GlobalKey<FormState>();
 
@@ -22,6 +22,7 @@ class _DataProfileState extends State<DataProfile> {
   final userController = TextEditingController();
   final emailController = TextEditingController();
   final roleController = TextEditingController();
+  final AngkatanController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +61,12 @@ class _DataProfileState extends State<DataProfile> {
                     String userName = "${data['userName']}";
                     String email = "${data['email']}";
                     String role = "${data['role']}";
+                    String Angkatan = "${data['Angkatan']}";
 
                     userController.text = userName;
                     emailController.text = email;
                     roleController.text = role;
+                    AngkatanController.text = Angkatan;
 
                     return Center(
                       child: Column(
@@ -129,6 +132,19 @@ class _DataProfileState extends State<DataProfile> {
                                     ),
                                   ),
                                   SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextField(
+                                    controller: AngkatanController,
+                                    decoration: InputDecoration(
+                                      label: Text('Angkatan'),
+                                      prefixIcon: Icon(Icons.person_add_alt_1),
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                    ),
+                                  ),
+                                  SizedBox(
                                     height: 30,
                                   ),
                                   // BUTTON
@@ -148,7 +164,10 @@ class _DataProfileState extends State<DataProfile> {
                                               "userName": userController.text,
                                               "email": emailController.text,
                                               "role": roleController.text,
+                                              "Angkatan":
+                                                  AngkatanController.text
                                             });
+                                            Navigator.pop(context);
                                           }
                                         },
                                         icon: Text(

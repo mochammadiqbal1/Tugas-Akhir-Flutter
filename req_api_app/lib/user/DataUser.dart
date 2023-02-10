@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:req_api_app/constant/color.dart';
-import 'package:req_api_app/user/search_testfield.dart';
 
 final userNameController = TextEditingController();
 final roleController = TextEditingController();
+final AngkatanController = TextEditingController();
 final _formKey = GlobalKey<FormState>();
 
 class Data extends StatefulWidget {
@@ -49,10 +48,6 @@ class _tambahDataState extends State<Data> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: tFormHeight),
-              // child: SearchTextField(),
-            ),
             StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('users')
@@ -81,9 +76,9 @@ class _tambahDataState extends State<Data> {
                                     Text(
                                       e['role'],
                                     ),
-                                    // Text(
-                                    //   e['gender'],
-                                    // ),
+                                    Text(
+                                      e['Angkatan'],
+                                    ),
                                   ],
                                 ),
                                 trailing: Row(
@@ -98,7 +93,7 @@ class _tambahDataState extends State<Data> {
                                         // print("Masukkk");
                                         userNameController.text = e["userName"];
                                         roleController.text = e["role"];
-                                        // genderController.text = e["gender"];
+                                        AngkatanController.text = e["Angkatan"];
                                         showDialog(
                                             context: context,
                                             builder: (context) => AlertDialog(
@@ -137,61 +132,24 @@ class _tambahDataState extends State<Data> {
                                                           textAlign:
                                                               TextAlign.start,
                                                         ),
-                                                        // TextFormField(
-                                                        //   controller:
-                                                        //   genderController,
-                                                        //   decoration:
-                                                        //   const InputDecoration(
-                                                        //       icon: Icon(
-                                                        //           Icons
-                                                        //               .man),
-                                                        //       hintText:
-                                                        //       "Input Your Gender"),
-                                                        //   // maxLength: 8,
-                                                        //   textAlign:
-                                                        //   TextAlign.start,
-                                                        //   onSaved: (val) {
-                                                        //     // titleController.text = val;
-                                                        //   },
-                                                        // ),
+                                                        TextFormField(
+                                                          controller:
+                                                              AngkatanController,
+                                                          decoration:
+                                                              const InputDecoration(
+                                                                  icon: Icon(
+                                                                      Icons
+                                                                          .man),
+                                                                  hintText:
+                                                                      "Input Your Angkatan"),
+                                                          // maxLength: 8,
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
-                                                  actions: [
-                                                    // IconButton(
-                                                    //   onPressed: () {
-                                                    //     // users.doc(e.id).update(
-                                                    //     //   {
-                                                    //     //     'userName':
-                                                    //     //         userNameController.text,
-                                                    //     //     'role': roleController.text,
-                                                    //     //     // 'gender':
-                                                    //     //     // genderController
-                                                    //     //     //     .text,
-                                                    //     //   },
-                                                    //     // );
-                                                    //     // userNameController.clear();
-                                                    //     // roleController.clear();
-                                                    //     // // genderController
-                                                    //     // //     .clear();
-                                                    //     Navigator.of(context).pop();
-                                                    //   },
-                                                    //   icon: const Icon(
-                                                    //     Icons.edit_attributes,
-                                                    //     color: Colors.green,
-                                                    //   ),
-                                                    // ),
-                                                  ],
                                                 ));
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.delete_outline,
-                                        color: Colors.red,
-                                      ),
-                                      onPressed: () {
-                                        users.doc(e.id).delete();
                                       },
                                     ),
                                   ],

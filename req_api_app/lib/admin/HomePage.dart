@@ -5,16 +5,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:req_api_app/admin/list_view.dart';
 import 'package:req_api_app/constant/color.dart';
-import 'package:req_api_app/component/appbar.dart';
 import 'package:req_api_app/constant/size.dart';
 // import 'package:req_api_app/models/category.dart';
 
 import 'package:req_api_app/screen/profile.dart';
-import 'package:req_api_app/user/Data.dart';
+import 'package:req_api_app/user/DataUser.dart';
 import 'package:req_api_app/user/search_testfield.dart';
 
 import '../models/category.dart';
+import 'list_user.dart';
+import 'search_teksfield.dart';
 
 class HomeScreenAdmin extends StatefulWidget {
   static String routeName = 'HomeUser';
@@ -96,7 +98,7 @@ class Body extends StatelessWidget {
                 onTap: () {
                   if (index == 1) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Data()));
+                        MaterialPageRoute(builder: (context) => DataUser()));
                   } else if (index == 0) {
                     Navigator.push(
                         context,
@@ -164,7 +166,7 @@ class AppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      height: 250,
+      height: 300,
       width: double.infinity,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -196,7 +198,11 @@ class AppBar extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          // const SearchTextField()
+          const SearchTextFieldData(),
+          SizedBox(
+            height: 20,
+          ),
+          const List(),
         ],
       ),
     );

@@ -22,6 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final userNameController = TextEditingController();
+  final AngkataController = TextEditingController();
 
   // sign user up method
   void signUserUp() async {
@@ -55,6 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     'createdAt': DateTime.now(),
                     'role': "user",
                     'userId': "${value.user!.uid}",
+                    'Angkatan': AngkataController
                   })
                 });
 
@@ -134,27 +136,35 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 const SizedBox(height: 25),
 
-                TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: "Enter email",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
+                MyTextField(
+                  controller: emailController,
+                  hintText: 'Email',
+                  obscureText: false,
                 ),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: "Enter Password",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.remove_red_eye),
+                SizedBox(
+                  height: 10,
                 ),
-              ),
+                MyTextField(
+                  controller: passwordController,
+                  hintText: 'Password',
+                  obscureText: true,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                MyTextField(
+                  controller: confirmPasswordController,
+                  hintText: 'Confirm password',
+                  obscureText: true,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                MyTextField(
+                  controller: AngkataController,
+                  hintText: 'Angkatan',
+                  obscureText: false,
+                ),
 
                 const SizedBox(height: 25),
 
